@@ -23,21 +23,19 @@ class BooksApp extends React.Component {
   }
 
   changeShelf = (id, shelf) => {
-      BooksAPI.update({id}, shelf)
-      .then((response) => {
-        BooksAPI.getAll()
-          .then((response) => {
-            this.setState({ books: response});
-        })
-      });
-      
+    BooksAPI.update({id}, shelf)
+    .then((response) => {
+      BooksAPI.getAll()
+        .then((response) => {
+          this.setState({ books: response});
+      })
+    });
   }
 
   render() {
     return (
       <div className="app"> 
-      <BrowserRouter>
-       
+        <BrowserRouter>
           <Route 
             path='/' 
             exact 
@@ -45,7 +43,8 @@ class BooksApp extends React.Component {
           />
           <Route 
               path="/search" 
-              render={(props) => <Search {...props} changeShelf={this.changeShelf} books={this.state.books}/>}/>
+              render={(props) => <Search {...props} changeShelf={this.changeShelf} books={this.state.books}/>}
+          />
         </BrowserRouter>
       </div>  
       
